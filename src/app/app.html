@@ -1,0 +1,17 @@
+<main class="container">
+  <h1 class="text-center">Angular test</h1>
+  <div class="row" ng-repeat="item in app.items">
+    <label class="col-md-1">{{item['Name']}}</label>
+    <div class="col-md-9">
+      <rzslider rz-slider-options="app.getOptions($index)" rz-slider-model="item['Percent']"></rzslider>
+    </div>
+    <div class="col-md-2">
+      <input type="number" digits-dot min="0" max="100" ng-model="item['Percent']" ng-change="app.calc($index)">
+    </div>
+  </div>
+  <button ng-click="app.addItem()">Add Item</button>
+  <h5>Результат:</h5>
+  <div class="row" ng-repeat="item in app.items">
+    <p>{{item['Name']}}: {{item['Percent'] | number: 2}}</p>
+  </div>
+</main>
